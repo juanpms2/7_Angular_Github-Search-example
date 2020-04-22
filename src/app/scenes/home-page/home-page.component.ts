@@ -3,21 +3,19 @@ import { MemberEntity } from "@app/models";
 import { MembersApiService } from "@app/common";
 
 @Component({
-	selector: "app-members-table",
-	templateUrl: "./members-table.component.html",
-	styles: [],
+	selector: "app-home-page",
+	templateUrl: "./home-page.component.html",
+	styleUrls: ["./home-page.component.css"],
 })
-export class MembersTableComponent {
+export class HomePageComponent {
 	members: MemberEntity[];
-	organization: string;
 
 	constructor(private membersApi: MembersApiService) {}
 
-	loadMembers(organization) {
-		this.membersApi.getAllMembers(organization).subscribe(
+	loadMembers() {
+		this.membersApi.getAllMembers("lemoncode").subscribe(
 			(ms) => (this.members = ms),
 			(error) => console.log(error)
 		);
-		console.log("hola");
 	}
 }
