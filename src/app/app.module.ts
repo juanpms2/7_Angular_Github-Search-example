@@ -1,26 +1,23 @@
-import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
+import { BrowserModule } from "@angular/platform-browser";
+import { HttpClientModule } from "@angular/common/http";
 import { RouterModule } from "@angular/router";
+import { MembersModule } from "@app/members/members.module";
 
 import { AppComponent } from "./app.component";
 
-import { MembersModule } from "./members/members.module";
-import { HomePageComponent } from "./scenes/home-page/home-page.component";
-import { MembersPageComponent } from "./scenes/members-page/members-page.component";
-import { UserPageComponent } from "./scenes/user-page/user-page.component";
-import { appRoutes } from "@app/core/routes/app.routes";
-import { NavBarComponent } from './common/components/nav-bar/nav-bar.component';
+import { appRoutes } from "./app.routes";
+import { MembersApiService } from "./services";
 
 @NgModule({
-	declarations: [
-		AppComponent,
-		HomePageComponent,
-		MembersPageComponent,
-		UserPageComponent,
-		NavBarComponent,
+	declarations: [AppComponent],
+	imports: [
+		BrowserModule,
+		HttpClientModule,
+		MembersModule,
+		RouterModule.forRoot(appRoutes),
 	],
-	imports: [BrowserModule, MembersModule, RouterModule.forRoot(appRoutes)],
-	providers: [],
+	providers: [MembersApiService],
 	bootstrap: [AppComponent],
 })
 export class AppModule {}

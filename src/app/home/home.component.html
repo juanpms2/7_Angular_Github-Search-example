@@ -3,7 +3,7 @@
 		<div class="title">
 			GitHub Search...
 		</div>
-		<form class="form-inline search-form" (onsubmit)="loadMembers()">
+		<div class="form-inline search-form">
 			<input
 				class="form-control item-form"
 				type="search"
@@ -11,9 +11,12 @@
 				aria-label="Search"
 			/>
 
-			<button class="btn btn-outline-success item-form" type="submit">
+			<button
+				class="btn btn-outline-success item-form"
+				(click)="sendCompanyToLoadMembers(organization)"
+			>
 				Search
 			</button>
-		</form>
+		</div>
 	</div>
 </div>

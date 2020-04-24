@@ -1,0 +1,10 @@
+a {
+	font-size: 1.2rem;
+}
+
+input {
+	background-image: url(../../../assets/logoGitHub2.png);
+	background-size: 20px;
+	background-repeat: no-repeat;
+	background-position: 95% center;
+}

@@ -1,0 +1,28 @@
+<app-nav-bar (organization)="loadMembers($event)"></app-nav-bar>
+<nav aria-label="breadcrumb" class="p-4 title">
+	<ol class="breadcrumb bg-dark">
+		<li class="breadcrumb-item" aria-current="page"></li>
+	</ol>
+</nav>
+<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-xl-4 p-4">
+	<app-card *ngFor="let member of members" [memberCard]="member"></app-card>
+</div>
+<div class="container d-flex justify-content-center">
+	<nav aria-label="Page navigation example">
+		<ul class="pagination">
+			<li class="page-item">
+				<a class="page-link" href="#" aria-label="Previous">
+					<span aria-hidden="true">&laquo;</span>
+				</a>
+			</li>
+			<li class="page-item"><a class="page-link" href="#">1</a></li>
+			<li class="page-item"><a class="page-link" href="#">2</a></li>
+			<li class="page-item"><a class="page-link" href="#">3</a></li>
+			<li class="page-item">
+				<a class="page-link" href="#" aria-label="Next">
+					<span aria-hidden="true">&raquo;</span>
+				</a>
+			</li>
+		</ul>
+	</nav>
+</div>

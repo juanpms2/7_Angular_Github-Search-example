@@ -1,5 +1,5 @@
 <nav class="navbar navbar-dark bg-dark">
-	<a class="navbar-brand" [routerLink]="['/home']">
+	<a class="navbar-brand" routerLink="/home">
 		<img
 			src="../../../assets/logoGitHub2.png"
 			width="30"
@@ -9,15 +9,20 @@
 		/>
 		GitHub Search...
 	</a>
-	<form class="form-inline" onsubmit="loadMembers()">
+	<div class="form-inline">
 		<input
 			class="form-control mr-sm-2"
 			type="search"
 			placeholder="Search"
 			aria-label="Search"
+			#inputNavBar
 		/>
-		<button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+
+		<button
+			class="btn btn-outline-success my-2 my-sm-0"
+			(click)="sendCompanyToLoadMembers(inputNavBar.value)"
+		>
 			Search
 		</button>
-	</form>
+	</div>
 </nav>

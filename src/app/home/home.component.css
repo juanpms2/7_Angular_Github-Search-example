@@ -9,7 +9,7 @@
 }
 
 .container {
-	background-image: url("../../../assets/logoGitHub2.png");
+	background-image: url(../../assets/logoGitHub2.png);
 	background-repeat: no-repeat;
 	background-size: 100%;
 	background-position: center;
@@ -42,4 +42,11 @@
 .item-form {
 	width: 80%;
 	margin-bottom: 5%;
+}
+
+input {
+	background-image: url(../../assets/search-icon.png);
+	background-size: 20px;
+	background-repeat: no-repeat;
+	background-position: 95% center;
 }
