@@ -2,47 +2,54 @@
 <div class="container">
 	<div class="row row-cols-1 p-5">
 		<div class="col mb-4">
-			<div class="card">
-				<div class="card-header p-2">
+			<div class="container p-3 shadow-container">
+				<div class="card text-center shadow-container">
+					<div class="card-header p-2">
+						<img
+							src="{{ user.avatar_url }}"
+							class="card-img-top bg-dark img-corner"
+							alt="{{ memberCard.login }}"
+						/>
+						<span class="card-subtitle mb-2 text-muted p-4"
+							>Avatar name{{ user.name }}</span
+						>
+					</div>
 					<img
-						src="../../../assets/github-black.png"
-						class="img-link"
+						src="{{ user.avatar_url }}"
+						class="card-img-top bg-dark"
 						alt="..."
 					/>
-					<span class="card-subtitle mb-2 text-muted p-4">Avatar name</span>
-				</div>
-				<img
-					src="../../../assets/logoGitHub2.png"
-					class="card-img-top bg-dark"
-					alt="..."
-				/>
-				<div class="card-body">
-					<p class="card-text">
-						Some quick example text to build on the card title and make up the
-						bulk of the card's content.
-					</p>
-					<p class="card-text">
-						Some quick example text to build on the card title and make up the
-						bulk of the card's content.
-					</p>
-					<p class="card-text">
-						Some quick example text to build on the card title and make up the
-						bulk of the card's content.
-					</p>
-					<a class="card-link">
-						<img
-							src="../../../assets/followers.png"
-							class="img-link"
-							alt="..."
-						/>
-					</a>
-					<a class="card-link">
-						<img
-							src="../../../assets/github-black.png"
-							class="img-link"
-							alt="..."
-						/>
-					</a>
+					<div class="card-body">
+						<h5 class="card-title">{{ user.login }}</h5>
+						<h6 class="card-subtitle mb-2 text-muted">
+							{{ user.company }}
+						</h6>
+						<p class="card-text">
+							{{ user.bio }}
+						</p>
+						<p class="card-text">
+							Some quick example text to build on the card title and make up the
+							bulk of the card's content.
+						</p>
+						<p class="card-text">
+							Some quick example text to build on the card title and make up the
+							bulk of the card's content.
+						</p>
+						<a class="card-link">
+							<img
+								src="../../../assets/followers.png"
+								class="img-link"
+								alt="..."
+							/>
+						</a>
+						<a class="card-link">
+							<img
+								src="../../../assets/github-black.png"
+								class="img-link"
+								alt="..."
+							/>
+						</a>
+					</div>
 				</div>
 			</div>
 		</div>

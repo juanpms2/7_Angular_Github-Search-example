@@ -1,4 +1,6 @@
-import { Component, Input, Output, EventEmitter } from "@angular/core";
+import { Component, Output, EventEmitter } from "@angular/core";
+import { MemberEntity } from "@app/models";
+import { MembersApiService } from "@app/services";
 import { Router } from "@angular/router";
 
 @Component({
@@ -7,12 +9,20 @@ import { Router } from "@angular/router";
 	styleUrls: ["./home.component.css"],
 })
 export class HomeComponent {
-	@Output() organization: EventEmitter<string> = new EventEmitter<string>();
+	members: MemberEntity[];
+	company: string;
 
-	constructor(private router: Router) {}
+	constructor(private membersApi: MembersApiService, private router: Router) {}
 
-	sendCompanyToLoadMembers(company: string) {
-		this.organization.emit(company);
-		this.router.navigate(["members"]);
+	loadMembers(organization: string) {
+		this.company = organization;
+
+		this.membersApi.getAllMembers(organization).subscribe(
+			(arrayMembers) => (this.members = arrayMembers),
+			(error) => console.log(error)
+		);
+		this.router.navigate(["members"], {
+			queryParams: { organization },
+		});
 	}
 }

@@ -1,11 +1,14 @@
-<app-nav-bar (organization)="loadMembers($event)"></app-nav-bar>
+<app-nav-bar
+	(members)="sendMembersToCard($event)"
+	(company)="getCompany($event)"
+></app-nav-bar>
 <nav aria-label="breadcrumb" class="p-4 title">
 	<ol class="breadcrumb bg-dark">
-		<li class="breadcrumb-item" aria-current="page"></li>
+		<li class="breadcrumb-item" aria-current="page">{{ company }} members</li>
 	</ol>
 </nav>
 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-xl-4 p-4">
-	<app-card *ngFor="let member of members" [memberCard]="member"></app-card>
+	<app-card *ngFor="let member of membersCard" [memberCard]="member"></app-card>
 </div>
 <div class="container d-flex justify-content-center">
 	<nav aria-label="Page navigation example">

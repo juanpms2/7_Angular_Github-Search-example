@@ -1,6 +1,5 @@
-import { Component, Output, EventEmitter, Input } from "@angular/core";
+import { Component } from "@angular/core";
 import { MemberEntity } from "@app/models";
-import { MembersApiService } from "@app/services";
 
 @Component({
 	selector: "app-members",
@@ -8,17 +7,15 @@ import { MembersApiService } from "@app/services";
 	styleUrls: ["./members.component.css"],
 })
 export class MembersComponent {
-	members: MemberEntity[];
-	company: string = "lemoncode";
+	membersCard: MemberEntity[];
+	userCard: MemberEntity;
+	company: string;
 
-	constructor(private membersApi: MembersApiService) {}
+	sendMembersToCard(members: MemberEntity[]) {
+		this.membersCard = members;
+	}
 
-	loadMembers(organization: string) {
-		this.company = organization;
-		console.log("holaaaa");
-		this.membersApi.getAllMembers(this.company).subscribe(
-			(ms) => (this.members = ms),
-			(error) => console.log(error)
-		);
+	getCompany(company) {
+		this.company = company;
 	}
 }

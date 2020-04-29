@@ -17,7 +17,7 @@ import { MembersApiService } from "./services";
 		MembersModule,
 		RouterModule.forRoot(appRoutes),
 	],
-	providers: [MembersApiService],
+	providers: [],
 	bootstrap: [AppComponent],
 })
 export class AppModule {}
