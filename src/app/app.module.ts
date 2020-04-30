@@ -7,7 +7,6 @@ import { MembersModule } from "@app/members/members.module";
 import { AppComponent } from "./app.component";
 
 import { appRoutes } from "./app.routes";
-import { MembersApiService } from "./services";
 
 @NgModule({
 	declarations: [AppComponent],

@@ -1,7 +1,7 @@
 import { Component, Output, EventEmitter } from "@angular/core";
-import { MemberEntity } from "@app/models";
 import { MembersApiService } from "@app/services";
-import { Router } from "@angular/router";
+import { MemberEntity } from "@app/models";
+import { Observable } from "rxjs";
 
 @Component({
 	selector: "app-home",
@@ -9,20 +9,12 @@ import { Router } from "@angular/router";
 	styleUrls: ["./home.component.css"],
 })
 export class HomeComponent {
-	members: MemberEntity[];
-	company: string;
+	@Output() members: MemberEntity[];
+	@Output() company: string;
 
-	constructor(private membersApi: MembersApiService, private router: Router) {}
+	constructor(private load: MembersApiService) {}
 
 	loadMembers(organization: string) {
-		this.company = organization;
-
-		this.membersApi.getAllMembers(organization).subscribe(
-			(arrayMembers) => (this.members = arrayMembers),
-			(error) => console.log(error)
-		);
-		this.router.navigate(["members"], {
-			queryParams: { organization },
-		});
+		this.load.loadMembers(organization);
 	}
 }

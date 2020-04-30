@@ -1,8 +1,8 @@
-import { Component, Input } from "@angular/core";
+import { Component, Input, Output } from "@angular/core";
 import { Router } from "@angular/router";
 import { MemberEntity, UserEntity } from "@app/models";
 import { map } from "rxjs/operators";
-import { UserApiService } from "@app/services";
+import { UserApiService, MembersApiService } from "@app/services";
 
 @Component({
 	selector: "app-card",

@@ -26,7 +26,7 @@ import { MembersComponent } from "./members.component";
 		RouterModule,
 		// RouterModule.forChild([{ path: ":id", component: MemberDetailsComponent }]),
 	],
-	providers: [MembersApiService, UserApiService],
+	providers: [],
 	exports: [
 		CardComponent,
 		NavBarComponent,
