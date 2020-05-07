@@ -6,15 +6,17 @@
 		<div class="form-inline search-form">
 			<input
 				class="form-control item-form"
-				type="search"
+				type="text"
 				placeholder="Search"
 				aria-label="Search"
 				#inputHomeSearch
+				[(ngModel)]="searchInput"
 			/>
 
 			<button
 				class="btn btn-outline-success item-form"
 				(click)="loadMembers(inputHomeSearch.value)"
+				[disabled]="!searchInput"
 			>
 				Search
 			</button>

@@ -1,7 +1,5 @@
-import { Component, Output, EventEmitter } from "@angular/core";
+import { Component } from "@angular/core";
 import { MembersApiService } from "@app/services";
-import { MemberEntity } from "@app/models";
-import { Observable } from "rxjs";
 
 @Component({
 	selector: "app-home",
@@ -9,9 +7,7 @@ import { Observable } from "rxjs";
 	styleUrls: ["./home.component.css"],
 })
 export class HomeComponent {
-	@Output() members: MemberEntity[];
-	@Output() company: string;
-
+	searchInput = "";
 	constructor(private load: MembersApiService) {}
 
 	loadMembers(organization: string) {

@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter } from "@angular/core";
+import { Component, OnInit, EventEmitter, Input } from "@angular/core";
 import { UserEntity, MemberEntity } from "@app/models";
 import { Router, ActivatedRoute } from "@angular/router";
 import { UserApiService } from "@app/services";

@@ -1,27 +1,39 @@
-import { Component, OnInit, Input } from "@angular/core";
+import { Component, OnDestroy, OnInit } from "@angular/core";
 import { MemberEntity } from "@app/models";
 import { MembersApiService } from "@app/services";
-import { Observable } from "rxjs";
+// import { MembersService } from "../members/members.service";
+import { Subject, Subscription, Observable } from "rxjs";
+import { ActivatedRoute } from "@angular/router";
 
 @Component({
 	selector: "app-members",
 	templateUrl: "./members.component.html",
 	styleUrls: ["./members.component.css"],
 })
-export class MembersComponent implements OnInit {
-	membersCard: MemberEntity[];
-	userCard: MemberEntity;
+export class MembersComponent {
 	company: string;
+	membersCard: MemberEntity[];
 
-	constructor(private apiServices: MembersApiService) {}
+	// userCard: MemberEntity;
+
+	constructor(
+		private memberService: MembersApiService,
+		private route: ActivatedRoute
+	) {}
 
 	ngOnInit() {
-		this.membersCard = this.apiServices.members;
-		this.company = this.apiServices.company;
+		this.membersCard = this.memberService.members;
+		this.company = this.memberService.company;
+		this.route.queryParams.subscribe(() => {
+			this.company = this.memberService.company;
+			this.membersCard = this.memberService.members;
+		});
 	}
 
-	onChange() {
-		this.membersCard = this.apiServices.members;
-		this.company = this.apiServices.company;
-	}
+	ngOnDestroy() {}
+
+	// onChange() {
+	// 	this.company = this.memberService.company;
+	// 	this.membersCard = this.apiServices.members;
+	// }
 }

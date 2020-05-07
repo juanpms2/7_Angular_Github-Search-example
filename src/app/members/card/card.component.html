@@ -2,9 +2,9 @@
 	<div class="container p-3 shadow-container">
 		<div class="card text-center shadow-container">
 			<img
-				src="{{ memberCard.avatar_url }}"
+				[src]="memberCard.avatar_url"
 				class="card-img-top bg-dark img-corner"
-				alt="{{ memberCard.login }}"
+				[alt]="memberCard.login"
 			/>
 			<div class="card-body">
 				<h5 class="card-title">{{ memberCard.login }}</h5>
