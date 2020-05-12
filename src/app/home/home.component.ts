@@ -7,7 +7,6 @@ import { MembersApiService } from "@app/services";
 	styleUrls: ["./home.component.css"],
 })
 export class HomeComponent {
-	searchInput = "";
 	constructor(private load: MembersApiService) {}
 
 	loadMembers(organization: string) {

@@ -7,7 +7,6 @@ import { MembersApiService } from "@app/services";
 	styleUrls: ["./nav-bar.component.css"],
 })
 export class NavBarComponent {
-	searchInput = "";
 	constructor(private load: MembersApiService) {}
 
 	loadMembers(organization: string) {

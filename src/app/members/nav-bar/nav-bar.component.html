@@ -16,13 +16,11 @@
 			placeholder="Search"
 			aria-label="Search"
 			#inputNavBar
-			[(ngModel)]="searchInput"
 		/>
 
 		<button
 			class="btn btn-outline-success my-2 my-sm-0"
 			(click)="loadMembers(inputNavBar.value)"
-			[disabled]="!searchInput"
 		>
 			Search
 		</button>

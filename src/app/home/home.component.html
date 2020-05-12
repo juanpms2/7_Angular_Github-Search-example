@@ -10,13 +10,11 @@
 				placeholder="Search"
 				aria-label="Search"
 				#inputHomeSearch
-				[(ngModel)]="searchInput"
 			/>
 
 			<button
 				class="btn btn-outline-success item-form"
 				(click)="loadMembers(inputHomeSearch.value)"
-				[disabled]="!searchInput"
 			>
 				Search
 			</button>

@@ -1,9 +1,7 @@
-import { Component, OnDestroy, OnInit } from "@angular/core";
+import { Component } from "@angular/core";
 import { MemberEntity } from "@app/models";
 import { MembersApiService } from "@app/services";
-// import { MembersService } from "../members/members.service";
-import { Subject, Subscription, Observable } from "rxjs";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 
 @Component({
 	selector: "app-members",
@@ -18,22 +16,22 @@ export class MembersComponent {
 
 	constructor(
 		private memberService: MembersApiService,
-		private route: ActivatedRoute
+		private route: ActivatedRoute,
+		private router: Router
 	) {}
 
 	ngOnInit() {
-		this.membersCard = this.memberService.members;
-		this.company = this.memberService.company;
-		this.route.queryParams.subscribe(() => {
-			this.company = this.memberService.company;
-			this.membersCard = this.memberService.members;
+		this.route.queryParams.subscribe((params) => {
+			this.company = params.organization;
+			this.memberService.getAllMembers(this.company).subscribe(
+				(arrayMembers) => {
+					this.membersCard = arrayMembers;
+					this.router.navigate(["members"], { queryParams: { ...params } });
+				},
+				(error) => console.log(error)
+			);
 		});
 	}
 
 	ngOnDestroy() {}
-
-	// onChange() {
-	// 	this.company = this.memberService.company;
-	// 	this.membersCard = this.apiServices.members;
-	// }
 }

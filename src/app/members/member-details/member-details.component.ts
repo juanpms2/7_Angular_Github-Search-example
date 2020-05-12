@@ -33,9 +33,9 @@ export class MemberDetailsComponent implements OnInit {
 	// }
 
 	ngOnInit() {
-		this.route.queryParams.subscribe(
-			(params) => (this.userLogin = params.login)
-		);
+		this.route.queryParams.subscribe(() => {
+			this.user;
+		});
 		this.loadUser(this.userLogin);
 	}
 }

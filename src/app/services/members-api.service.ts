@@ -2,7 +2,7 @@ import { Injectable, Input } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Observable, of, Subject } from "rxjs";
 
-import { MemberEntity } from "@app/models";
+import { MemberEntity, createDefaultMemberEntity } from "@app/models";
 import { Router } from "@angular/router";
 
 @Injectable({
@@ -14,7 +14,7 @@ export class MembersApiService {
 
 	constructor(private http: HttpClient, private router: Router) {}
 
-	private getAllMembers(organizationName: string): Observable<MemberEntity[]> {
+	getAllMembers(organizationName: string): Observable<MemberEntity[]> {
 		const gitHubMembersUrl = `https://api.github.com/orgs/${organizationName}/members`;
 		return this.http.get<MemberEntity[]>(gitHubMembersUrl);
 	}
