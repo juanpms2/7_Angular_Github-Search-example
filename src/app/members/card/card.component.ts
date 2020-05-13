@@ -1,8 +1,6 @@
-import { Component, Input, Output } from "@angular/core";
+import { Component, Input } from "@angular/core";
 import { Router } from "@angular/router";
-import { MemberEntity, UserEntity } from "@app/models";
-import { map } from "rxjs/operators";
-import { UserApiService, MembersApiService } from "@app/services";
+import { MemberEntity } from "@app/models";
 
 @Component({
 	selector: "app-card",
@@ -11,7 +9,6 @@ import { UserApiService, MembersApiService } from "@app/services";
 })
 export class CardComponent {
 	@Input() memberCard: MemberEntity;
-	@Input() userCard: UserEntity[];
 
 	constructor(private router: Router) {}
 

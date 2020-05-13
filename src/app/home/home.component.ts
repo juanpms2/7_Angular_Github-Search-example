@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import { MembersApiService } from "@app/services";
+import { Router } from "@angular/router";
 
 @Component({
 	selector: "app-home",
@@ -7,9 +7,9 @@ import { MembersApiService } from "@app/services";
 	styleUrls: ["./home.component.css"],
 })
 export class HomeComponent {
-	constructor(private load: MembersApiService) {}
+	constructor(private router: Router) {}
 
 	loadMembers(organization: string) {
-		this.load.loadMembers(organization);
+		this.router.navigate(["members"], { queryParams: { organization } });
 	}
 }

@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import { MembersApiService } from "@app/services";
+import { Router } from "@angular/router";
 
 @Component({
 	selector: "app-nav-bar",
@@ -7,9 +7,9 @@ import { MembersApiService } from "@app/services";
 	styleUrls: ["./nav-bar.component.css"],
 })
 export class NavBarComponent {
-	constructor(private load: MembersApiService) {}
+	constructor(private router: Router) {}
 
 	loadMembers(organization: string) {
-		this.load.loadMembers(organization);
+		this.router.navigate(["members"], { queryParams: { organization } });
 	}
 }

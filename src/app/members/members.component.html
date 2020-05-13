@@ -1,12 +1,29 @@
+<!-- Navbar -->
 <app-nav-bar></app-nav-bar>
+
+<div
+	class="alert alert-danger alert-dismissible fade {{
+		error ? 'show' : 'hide'
+	}}"
+	role="alert"
+>
+	<strong>{{ error }}</strong>
+	<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+		<span aria-hidden="true">&times;</span>
+	</button>
+</div>
 <nav aria-label="breadcrumb" class="p-4 title">
 	<ol class="breadcrumb bg-dark">
-		<li class="breadcrumb-item" aria-current="page">{{ company }} members</li>
+		<li class="breadcrumb-item" aria-current="page">
+			{{ company.toLocaleUpperCase() }} Members
+		</li>
 	</ol>
 </nav>
+<!-- Card Users -->
 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-xl-4 p-4">
 	<app-card *ngFor="let member of membersCard" [memberCard]="member"></app-card>
 </div>
+<!-- Pagination -->
 <div class="container d-flex justify-content-center">
 	<nav aria-label="Page navigation example">
 		<ul class="pagination">
@@ -26,3 +43,13 @@
 		</ul>
 	</nav>
 </div>
+
+<!-- Spinner Loading... -->
+<ngx-spinner
+	bdColor="rgba(0, 0, 0, 0.8)"
+	size="default"
+	color="#fff"
+	type="pacman"
+	[fullScreen]="true"
+	><p style="color: white;">Loading...</p></ngx-spinner
+>
