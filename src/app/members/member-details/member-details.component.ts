@@ -37,7 +37,8 @@ export class MemberDetailsComponent implements OnInit, OnDestroy {
 				},
 				(error) => {
 					console.log(error);
-					this.error = `El usuario o compañía ${this.company} no existe en nuestra base de datos: ${error.json}`;
+					error = { ...error };
+					this.error = error.message;
 					this.spinner.hide();
 				}
 			);

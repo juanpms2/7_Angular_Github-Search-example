@@ -5,7 +5,14 @@
 	}}"
 	role="alert"
 >
-	<strong>{{ error }}</strong>
+	<span>
+		El usuario o compañia <strong>{{ this.company }}</strong> no existe en
+		nuestra base de datos.
+	</span>
+	<br />
+	<span
+		><i>{{ this.error }}</i></span
+	>
 	<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 		<span aria-hidden="true">&times;</span>
 	</button>

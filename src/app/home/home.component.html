@@ -6,6 +6,9 @@
 		<div class="form-inline search-form">
 			<input
 				class="form-control item-form"
+				(keypress)="
+					$event.keyCode === 13 ? loadMembers($event.target.value) : undefined
+				"
 				type="text"
 				placeholder="Search"
 				aria-label="Search"
