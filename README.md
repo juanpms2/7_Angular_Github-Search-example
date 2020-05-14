@@ -4,7 +4,7 @@ El ejercicio consiste en extender el ejemplo de mostrar los miembros de una orga
 
 En el [ejemplo de partida](https://github.com/Lemoncode/angular-exercise/tree/master/00_start_8) está harcodeado "Lemoncode", lo que queremos es que el usuario pueda teclear cualquier organización (por ejemplo "Microsoft") y al pulsar en un botón se muestra la lista de miembros que pertenece a dicha compañia.
 
-- Se amplia con lo siguiente:
+Se amplia con lo siguiente:
 
 - Para el diseño se ha utilizado bootstrap.
 
