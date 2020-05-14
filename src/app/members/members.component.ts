@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from "@angular/core";
 import { MemberEntity } from "@app/models";
 import { MembersApiService } from "./members-api.service";
 import { ActivatedRoute, Router } from "@angular/router";
-import { Subject, Subscription } from "rxjs";
+import { Subscription } from "rxjs";
 import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
@@ -14,7 +14,6 @@ export class MembersComponent implements OnInit, OnDestroy {
 	company: string;
 	members: MemberEntity[];
 	subscription: Subscription;
-	subject: Subject<any>;
 	error: string;
 
 	//props pagination
