@@ -3,7 +3,6 @@ export interface UserEntity {
 	id: number;
 	node_id: string;
 	avatar_url: string;
-	gravatar_id: string;
 	url: string;
 	html_url: string;
 	followers_url: string;
@@ -37,7 +36,6 @@ export const createDefaultUserEntity = (): UserEntity => ({
 	id: 0,
 	node_id: "",
 	avatar_url: "",
-	gravatar_id: "",
 	url: "",
 	html_url: "",
 	followers_url: "",

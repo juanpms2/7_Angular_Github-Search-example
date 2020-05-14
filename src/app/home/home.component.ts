@@ -1,7 +1,6 @@
-import { Component, Output, EventEmitter } from "@angular/core";
-import { MembersApiService } from "@app/services";
-import { MemberEntity } from "@app/models";
-import { Observable } from "rxjs";
+import { Component } from "@angular/core";
+import { Router } from "@angular/router";
+import { EventEmitter } from "protractor";
 
 @Component({
 	selector: "app-home",
@@ -9,12 +8,9 @@ import { Observable } from "rxjs";
 	styleUrls: ["./home.component.css"],
 })
 export class HomeComponent {
-	@Output() members: MemberEntity[];
-	@Output() company: string;
-
-	constructor(private load: MembersApiService) {}
+	constructor(private router: Router) {}
 
 	loadMembers(organization: string) {
-		this.load.loadMembers(organization);
+		this.router.navigate(["members"], { queryParams: { organization } });
 	}
 }

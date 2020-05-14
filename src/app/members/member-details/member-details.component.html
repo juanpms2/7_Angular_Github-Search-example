@@ -1,18 +1,45 @@
 <app-nav-bar></app-nav-bar>
+<div
+	class="alert alert-danger alert-dismissible fade {{
+		error ? 'show' : 'hide'
+	}}"
+	role="alert"
+>
+	<span>
+		El usuario o compañia <strong>{{ this.company }}</strong> no existe en
+		nuestra base de datos.
+	</span>
+	<br />
+	<span
+		><i>{{ this.error }}</i></span
+	>
+	<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+		<span aria-hidden="true">&times;</span>
+	</button>
+</div>
 <div class="container">
 	<div class="row row-cols-1 p-5">
+		<ngx-spinner
+			bdColor="rgba(0, 0, 0, 0.8)"
+			size="default"
+			color="#fff"
+			type="pacman"
+			[fullScreen]="true"
+			><p style="color: white;">Loading...</p></ngx-spinner
+		>
 		<div class="col mb-4">
 			<div class="container p-3 shadow-container">
 				<div class="card text-center shadow-container">
-					<div class="card-header p-2">
+					<div class="toast-header">
 						<img
 							src="{{ user.avatar_url }}"
-							class="card-img-top bg-dark img-corner"
-							alt="{{ memberCard.login }}"
+							class="bg-dark img-corner"
+							alt="{{ user.login.substr(0, 1) }}"
 						/>
-						<span class="card-subtitle mb-2 text-muted p-4"
-							>Avatar name{{ user.name }}</span
-						>
+						<span class="mr-auto mb-2 text-muted p-4">{{
+							user.name ? user.name : user.login
+						}}</span>
+						<small>{{ user.company }}</small>
 					</div>
 					<img
 						src="{{ user.avatar_url }}"
@@ -20,18 +47,15 @@
 						alt="..."
 					/>
 					<div class="card-body">
-						<h5 class="card-title">{{ user.login }}</h5>
-						<h6 class="card-subtitle mb-2 text-muted">
-							{{ user.company }}
-						</h6>
+						<h5 class="card-title">{{ user.name ? user.name : user.login }}</h5>
 						<p class="card-text">
 							{{ user.bio }}
 						</p>
-						<p class="card-text">
+						<p class="card-text text-muted">
 							Some quick example text to build on the card title and make up the
 							bulk of the card's content.
 						</p>
-						<p class="card-text">
+						<p class="card-text text-muted">
 							Some quick example text to build on the card title and make up the
 							bulk of the card's content.
 						</p>
@@ -41,8 +65,9 @@
 								class="img-link"
 								alt="..."
 							/>
+							<em>{{ user.followers }}</em>
 						</a>
-						<a class="card-link">
+						<a class="card-link" href="{{ user.html_url }}" target="_blank">
 							<img
 								src="../../../assets/github-black.png"
 								class="img-link"

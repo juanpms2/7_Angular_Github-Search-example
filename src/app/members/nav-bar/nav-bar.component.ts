@@ -1,6 +1,5 @@
-import { Component, Output, Input, EventEmitter } from "@angular/core";
-import { MembersApiService } from "@app/services";
-import { MemberEntity } from "@app/models";
+import { Component } from "@angular/core";
+import { Router } from "@angular/router";
 
 @Component({
 	selector: "app-nav-bar",
@@ -8,12 +7,9 @@ import { MemberEntity } from "@app/models";
 	styleUrls: ["./nav-bar.component.css"],
 })
 export class NavBarComponent {
-	@Output() members: EventEmitter<MemberEntity[]>;
-	@Output() company: EventEmitter<string>;
-
-	constructor(private load: MembersApiService) {}
+	constructor(private router: Router) {}
 
 	loadMembers(organization: string) {
-		this.load.loadMembers(organization);
+		this.router.navigate(["members"], { queryParams: { organization } });
 	}
 }

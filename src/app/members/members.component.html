@@ -1,28 +1,54 @@
+<!-- Navbar -->
 <app-nav-bar></app-nav-bar>
+<!-- if error -->
+<div
+	class="alert alert-danger alert-dismissible fade {{
+		error ? 'show' : 'hide'
+	}}"
+	role="alert"
+>
+	<span>
+		El usuario o compañia <strong>{{ this.company }}</strong> no existe en
+		nuestra base de datos.
+	</span>
+	<br />
+	<span
+		><i>{{ this.error }}</i></span
+	>
+	<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+		<span aria-hidden="true">&times;</span>
+	</button>
+</div>
 <nav aria-label="breadcrumb" class="p-4 title">
 	<ol class="breadcrumb bg-dark">
-		<li class="breadcrumb-item" aria-current="page">{{ company }} members</li>
+		<li class="breadcrumb-item" aria-current="page">
+			{{ company.toLocaleUpperCase() }} Members
+		</li>
 	</ol>
 </nav>
+<!-- Card Users -->
 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-xl-4 p-4">
 	<app-card *ngFor="let member of membersCard" [memberCard]="member"></app-card>
 </div>
+<!-- Pagination -->
 <div class="container d-flex justify-content-center">
 	<nav aria-label="Page navigation example">
 		<ul class="pagination">
-			<li class="page-item">
-				<a class="page-link" href="#" aria-label="Previous">
-					<span aria-hidden="true">&laquo;</span>
-				</a>
-			</li>
-			<li class="page-item"><a class="page-link" href="#">1</a></li>
-			<li class="page-item"><a class="page-link" href="#">2</a></li>
-			<li class="page-item"><a class="page-link" href="#">3</a></li>
-			<li class="page-item">
-				<a class="page-link" href="#" aria-label="Next">
-					<span aria-hidden="true">&raquo;</span>
-				</a>
-			</li>
+			<div *ngFor="let number of totalPage">
+				<li class="page-item" (click)="handleChange(number + 1)">
+					<span class="page-link">{{ number + 1 }}</span>
+				</li>
+			</div>
 		</ul>
 	</nav>
 </div>
+
+<!-- Spinner Loading... -->
+<ngx-spinner
+	bdColor="rgba(0, 0, 0, 0.8)"
+	size="default"
+	color="#fff"
+	type="pacman"
+	[fullScreen]="true"
+	><p style="color: white;">Loading...</p></ngx-spinner
+>
