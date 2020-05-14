@@ -8,3 +8,7 @@ ol {
 	border-radius: 3px;
 	border: none;
 }
+
+.page-item {
+	cursor: pointer;
+}

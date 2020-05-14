@@ -12,10 +12,19 @@ import { NgxSpinnerService } from "ngx-spinner";
 })
 export class MembersComponent implements OnInit, OnDestroy {
 	company: string;
-	membersCard: MemberEntity[];
+	members: MemberEntity[];
 	subscription: Subscription;
 	subject: Subject<any>;
 	error: string;
+
+	//props pagination
+	page: number = 1;
+	totalPage: Array<number> = [];
+	increment: number = 4;
+	init: number = this.page;
+	fin: number = this.init + this.increment;
+	totalMember: number;
+	membersCard: MemberEntity[];
 
 	constructor(
 		private memberService: MembersApiService,
@@ -24,6 +33,20 @@ export class MembersComponent implements OnInit, OnDestroy {
 		private spinner: NgxSpinnerService
 	) {}
 
+	calcTotalPage(value: number) {
+		this.totalPage = [];
+		for (let i = 0; i < value; i++) {
+			this.totalPage.push(i);
+		}
+	}
+
+	handleChange(value: number) {
+		this.init = value * this.increment - 4;
+		this.fin = value * this.increment;
+		this.page = value;
+		this.membersCard = this.members.slice(this.init, this.fin);
+	}
+
 	ngOnInit() {
 		this.spinner.show();
 		this.subscription = this.route.queryParams.subscribe((params) => {
@@ -31,7 +54,11 @@ export class MembersComponent implements OnInit, OnDestroy {
 			this.company = params.organization;
 			this.memberService.getAllMembers(this.company).subscribe(
 				(arrayMembers) => {
-					this.membersCard = arrayMembers;
+					this.error = undefined;
+					this.members = arrayMembers;
+					this.totalMember = Math.round(arrayMembers.length / 4);
+					this.calcTotalPage(this.totalMember);
+					this.membersCard = arrayMembers.slice(this.init, this.fin);
 					this.spinner.hide();
 					this.router.navigate(["members"], { queryParams: { ...params } });
 				},
@@ -39,6 +66,7 @@ export class MembersComponent implements OnInit, OnDestroy {
 					console.log(error);
 					error = { ...error };
 					this.error = error.message;
+					this.members = [];
 					this.spinner.hide();
 				}
 			);
