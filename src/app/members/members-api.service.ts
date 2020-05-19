@@ -1,14 +1,13 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
-import { NgxSpinnerService } from "ngx-spinner";
 import { MemberEntity, UserEntity } from "@app/models";
 
 @Injectable({
 	providedIn: "root",
 })
 export class MembersApiService {
-	constructor(private http: HttpClient, private spinner: NgxSpinnerService) {}
+	constructor(private http: HttpClient) {}
 
 	getAllMembers(organizationName: string): Observable<MemberEntity[]> {
 		const gitHubMembersUrl = `https://api.github.com/orgs/${organizationName}/members`;

@@ -20,7 +20,7 @@ export class MembersComponent implements OnInit, OnDestroy {
 	page: number = 1;
 	totalPage: Array<number> = [];
 	increment: number = 4;
-	init: number = this.page;
+	init: number = 0;
 	fin: number = this.init + this.increment;
 	totalMember: number;
 	membersCard: MemberEntity[];
